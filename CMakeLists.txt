@@ -10,7 +10,12 @@ set(JSON_SOURCES
     src/json/JsonSerializer.cpp
 )
 
-add_executable(DataPersistence src/main.cpp src/model/Record.cpp ${JSON_SOURCES})
+add_executable(DataPersistence
+    src/main.cpp
+    src/model/Record.cpp
+    src/repository/JsonRepository.cpp
+    ${JSON_SOURCES}
+)
 target_include_directories(DataPersistence PRIVATE src)
 
 include(FetchContent)
