@@ -1,3 +1,7 @@
+#ifdef _WIN32
+#define NOMINMAX
+#include <windows.h>
+#endif
 #include "repository/JsonRepository.h"
 #include <iostream>
 
@@ -16,6 +20,10 @@ static void printAll(const std::string& label, JsonRepository& repo) {
 }
 
 int main() {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
     const std::string dataFile = "records.json";
 
     // ── Scenario 1: Record 3개 저장 ─────────────────────────────
