@@ -4,7 +4,13 @@ project(DataPersistence CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(DataPersistence src/main.cpp)
+set(JSON_SOURCES
+    src/json/JsonValue.cpp
+    src/json/JsonParser.cpp
+    src/json/JsonSerializer.cpp
+)
+
+add_executable(DataPersistence src/main.cpp ${JSON_SOURCES})
 target_include_directories(DataPersistence PRIVATE src)
 
 include(FetchContent)
