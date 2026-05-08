@@ -1,0 +1,36 @@
+Phase    : PoC2-Phase5
+Stage    : 통합 검증 (콘솔 출력 + 파일 확인)
+Date     : 2026-05-08
+Result   : PASS
+
+[콘솔 출력 결과]
+=== Scenario 1: Save 3 Records ===
+[After save]
+  ID=1 | Name=Temperature | Value=36.5
+  ID=2 | Name=Pressure    | Value=101.3
+  ID=3 | Name=Humidity    | Value=55
+  -> records.json created
+
+=== Scenario 2: Restart -> Restore from File ===
+[Restored from records.json]
+  ID=1 | Name=Temperature | Value=36.5
+  ID=2 | Name=Pressure    | Value=101.3
+  ID=3 | Name=Humidity    | Value=55
+
+=== Scenario 3: Update Record 2 ===
+[After update (Pressure: 101.3 -> 103.5)]
+  ID=1 | Name=Temperature | Value=36.5
+  ID=2 | Name=Pressure    | Value=103.5
+  ID=3 | Name=Humidity    | Value=55
+
+=== Scenario 4: Delete Record 1 ===
+[After delete (ID=1 removed)]
+  ID=2 | Name=Pressure | Value=103.5
+  ID=3 | Name=Humidity | Value=55
+
+[완료 기준 체크]
+- 4개 시나리오 콘솔 출력 확인 : OK
+- records.json 파일 생성 확인  : OK
+- 재시작 후 데이터 복원 확인   : OK
+- 수정·삭제 후 파일 갱신 확인  : OK
+- GTest 28/28 회귀 없음        : OK
